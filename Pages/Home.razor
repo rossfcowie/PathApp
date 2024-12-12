@@ -137,12 +137,12 @@
     {
         try
         {
-            berarertoken = Configuration["BEARER_TOKEN"];
+            berarertoken = "bearer " + Configuration["BEARER_TOKEN"];
 
         }
         catch
         {
-            berarertoken = "";
+            berarertoken = "bearer ";
 
         }
 
@@ -200,6 +200,15 @@
         myText = "Sending";
         try
         {
+            Console.WriteLine($"Weekly: {report.Weekly}"); 
+            Console.WriteLine($"Address: {report.Address}"); 
+            Console.WriteLine($"PostCode: {report.PostCode}"); 
+            Console.WriteLine($"City: {report.City}");
+            Console.WriteLine($"State: {report.State}"); 
+            Console.WriteLine($"Email: {report.Email}");
+            Console.WriteLine($"Business: {report.Business}");
+            Console.WriteLine($"Name: {report.Name}");
+            Console.WriteLine($"Genuine: {report.Genuine}");
             var client = new RestClient();
             var request = new RestRequest("https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_/t/1efae47c-61bf-4e5d-be11-4ae15d440dc7/SendWeatherReport", Method.Post);
             request.AddHeader("Authorization", bearerToken);
@@ -238,7 +247,8 @@
         }
         catch (Exception e)
         {
-            myText = $"Unexpected error: {e.Message}";
+            myText = $"Unexpected error: {e}";
+            
         }
     }
 
