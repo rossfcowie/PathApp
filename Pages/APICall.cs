@@ -43,6 +43,7 @@ namespace APICall
 
         private static async Task startJob(string bearerToken, WeatherReportRequest report)
         {
+            myText = ("Sending");
             var client = new RestClient();
             var request = new RestRequest("https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_/t/1efae47c-61bf-4e5d-be11-4ae15d440dc7/SendWeatherReport", Method.Post);
             request.AddHeader("Authorization", bearerToken);
