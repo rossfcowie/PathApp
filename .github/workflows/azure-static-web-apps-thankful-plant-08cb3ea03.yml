@@ -24,6 +24,10 @@ jobs:
         run: echo "BEARER_TOKEN=${{ secrets.BEARER_TOKEN }}">> $GITHUB_ENV
       - name: Print BEARER_TOKEN 
         run: echo $BEARER_TOKEN
+      - name: Update appsettings.json with BEARER_TOKEN
+        run: |
+          sed -i 's/"YOUR_DEFAULT_VALUE"/"${{ secrets.BEARER_TOKEN }}"/' appsettings.json
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
