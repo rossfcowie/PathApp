@@ -96,29 +96,50 @@
 
     private async Task startJob(string bearerToken, WeatherReportRequest report)
     {
-        myText = ("Sending");
-        var client = new RestClient();
-        var request = new RestRequest("https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_/t/1efae47c-61bf-4e5d-be11-4ae15d440dc7/SendWeatherReport", Method.Post);
-        request.AddHeader("Authorization", bearerToken);
-        request.AddHeader("Content-Type", "application/json");
-        request.AddHeader("Access-Control-Allow-Origin", "*");
-        var json = JsonConvert.SerializeObject(new
+        myText = "Sending";
+        try
         {
-            report.Weekly,
-            Address2 = report.PostCode,
-            Address1 = report.Address,
-            Address3 = report.City,
-            Address4 = report.Country,
-            report.Name,
-            BuisnessName = report.Business,
-            report.Email,
-            report.Genuine
-        });
+            var client = new RestClient();
+            var request = new RestRequest("https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_/t/1efae47c-61bf-4e5d-be11-4ae15d440dc7/SendWeatherReport", Method.Post);
+            request.AddHeader("Authorization", bearerToken);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Access-Control-Allow-Origin", "*");
 
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-        request.AddJsonBody(content);
+            var json = JsonConvert.SerializeObject(new
+            {
+                report.Weekly,
+                Address2 = report.PostCode,
+                Address1 = report.Address,
+                Address3 = report.City,
+                Address4 = report.Country,
+                report.Name,
+                BuisnessName = report.Business,
+                report.Email,
+                report.Genuine
+            });
 
-        RestResponse response = await client.ExecuteAsync(request);
-        myText = (response.Content);
+            request.AddJsonBody(json);
+
+            RestResponse response = await client.ExecuteAsync(request);
+
+            // Check if the response was successful
+            if (response.IsSuccessful)
+            {
+                myText = response.Content;
+            }
+            else
+            {
+                myText = $"Error: {response.StatusCode} - {response.StatusDescription}";
+            }
+        }
+        catch (HttpRequestException e)
+        {
+            myText = $"Request error: {e.Message}";
+        }
+        catch (Exception e)
+        {
+            myText = $"Unexpected error: {e.Message}";
+        }
     }
+
 }

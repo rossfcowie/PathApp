@@ -66,7 +66,7 @@ namespace APICall
             request.AddJsonBody(content);
 
             RestResponse response = await client.ExecuteAsync(request);
-            myText =(response.Content);
+            myText =(response.StatusCode.ToString());
         }
     }
 
