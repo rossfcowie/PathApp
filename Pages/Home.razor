@@ -128,11 +128,12 @@
     private string myText = "Not yet submitted";
     private void HandleValidSubmit()
     {
-        berarertoken = Configuration["BEARER_TOKEN"]; 
+        berarertoken = Configuration["BEARER_TOKEN"];
         if (!string.IsNullOrEmpty(berarertoken)) { 
             myText = "Token retrieved successfully."; 
         } else { 
-            myText = "Failed to retrieve the token."; 
+            myText = "Failed to retrieve the token.";
+            myText = Configuration["BEARER_TOKEN2"];
         } // Proceed with the API call if token is retrieved successfully 
         if (!string.IsNullOrEmpty(berarertoken)) 
         { start(weatherRequest); 
@@ -143,7 +144,6 @@
     public void start(WeatherReportRequest wrr)
     {
         berarertoken = Configuration["BEARER_TOKEN"];
-        berarertoken = Configuration["BEARER_TOKEN2"];
 
         startJob(berarertoken, wrr);
     }
