@@ -4,6 +4,7 @@
 @using Newtonsoft.Json.Linq;
 @using Newtonsoft.Json;
 @using System.Text;
+@using System.ComponentModel.DataAnnotations;
 @inject IConfiguration Configuration
 @inject NavigationManager Navigation
 <style>
@@ -36,6 +37,7 @@
     form input[type="text"],
     form input[type="email"],
     form input[type="radio"] {
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -100,10 +102,10 @@
     <div> 
         <label>Report Frequency:</label>
         <label>Weekly</label><input type="radio" checked="@(weatherRequest.Weekly)"
-               name="Frequency" @onchange="@(() => weatherRequest.Weekly = true)" />
+        name="Frequency" @onchange="@(() => weatherRequest.Weekly = true)" />
 
         <label>Daily</label><input type="radio" checked="@(!weatherRequest.Weekly)"
-               name="Frequency" @onchange="@(() => weatherRequest.Weekly = false)" />
+        name="Frequency" @onchange="@(() => weatherRequest.Weekly = false)" />
 
     </div>
 
@@ -154,13 +156,23 @@
         }
 
         public bool Weekly, Genuine;
-        public string Address;
-        public string PostCode;
-        public string City;
-        public string State;
-        public string Email;
-        public string Business;
-        public string Name;
+
+        [Required(ErrorMessage = "Address is required")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "Postcode is required")]
+        public string PostCode { get; set; }
+        [Required(ErrorMessage = "City is required")]
+        public string City { get; set; }
+        [Required(ErrorMessage = "State is required")]
+        public string State { get; set; }
+        [Required(ErrorMessage = "EmailAddress is required")]
+        [EmailAddress(ErrorMessage = "EmailAddress must be valid")]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Business Name is required")]
+        public string Business { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
+        
     }
 
     private async Task startJob(string bearerToken, WeatherReportRequest report)
