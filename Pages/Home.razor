@@ -61,7 +61,7 @@
         start(weatherRequest);
     }
 
-    const string ORCHESTRATOR_URL = "http://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
+    const string ORCHESTRATOR_URL = "https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
     public void start(WeatherReportRequest wrr)
     {
         string bearerToken = "Bearer rt_17DC5C7C0E4D2E3996AD9B7ECD4225CDFE958835F67AFFB15B7B7E9FE6D9A3C7-1";
@@ -103,7 +103,6 @@
             var request = new RestRequest("https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_/t/1efae47c-61bf-4e5d-be11-4ae15d440dc7/SendWeatherReport", Method.Post);
             request.AddHeader("Authorization", bearerToken);
             request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("Access-Control-Allow-Origin", "*");
 
             var json = JsonConvert.SerializeObject(new
             {
