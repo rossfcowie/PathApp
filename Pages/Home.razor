@@ -35,13 +35,13 @@
     }
 
     form input[type="text"],
-        form input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
+    form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
 
     form input[type="radio"] {
     width: 30%;
@@ -97,7 +97,7 @@
     </div>
     <div>
         <label>Email:</label>
-        <InputText @bind-Value="weatherRequest.Email" />
+        <InputText @bind-Value="weatherRequest.MyEmail" />
     </div>
     <div>
         <label>Business:</label>
@@ -105,7 +105,7 @@
     </div>
     <div>
         <label>Name:</label>
-        <InputText @bind-Value="weatherRequest.Name" />
+        <InputText @bind-Value="weatherRequest.MyName" />
     </div>
     <div> 
         <label>Report Frequency:</label>
@@ -159,7 +159,7 @@
             City = city;
             State = state;
             Email = email;
-            Name = name;
+            MyName = name;
             Business = business;
         }
         public bool Daily{
@@ -183,12 +183,16 @@
         public string State { get; set; }
         [Required(ErrorMessage = "EmailAddress is required")]
         [EmailAddress(ErrorMessage = "EmailAddress must be valid")]
-        public string Email { get; set; }
+        public string MyEmail { get; set; }
         [Required(ErrorMessage = "Business Name is required")]
         public string Business { get; set; }
         [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
-        
+        public string MyName { get; set; }
+
+        public string Name { get { return MyName; } }
+
+        public string Email { get { return MyEmail; } }
+
     }
 
     private async Task startJob(string bearerToken, WeatherReportRequest report)
@@ -208,9 +212,9 @@
                 Address2 = report.PostCode,
                 Address3 = report.City,
                 Address4 = report.State,
-                Name = report.Name,
+                report.Name,
                 BuisnessName = report.Business,
-                Email = report.Email,
+                report.Email,
                 report.Genuine
             });
 
