@@ -9,60 +9,59 @@
 <style>
 
     h3 {
-        text-align: center;
-        color: #333;
+    text-align: center;
+    color: #333;
     }
 
     form {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        max-width: 500px;
-        width: 100%;
-        margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
     }
 
-        form div {
-            margin-bottom: 15px;
-        }
+    form div {
+    margin-bottom: 15px;
+    }
 
-        form label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    }
 
-        form input[type="text"],
-        form input[type="email"],
-        form input[type="checkbox"] {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="radio"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
 
-        form button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
+    form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    }
 
-            form button[type="submit"]:hover {
-                background-color: #0056b3;
-            }
+    form button[type="submit"]:hover {
+    background-color: #0056b3;
+    }
 
     p {
-        text-align: center;
-        font-size: 14px;
-        color: #333;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
     }
 
 </style>
@@ -70,14 +69,14 @@
 <EditForm Model="@weatherRequest" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-        <div>
-            <label>Address:</label>
-            <InputText @bind-Value="weatherRequest.Address" />
-        </div>
-        <div>
-            <label>PostCode:</label>
-            <InputText @bind-Value="weatherRequest.PostCode" />
-        </div>
+    <div>
+        <label>Address:</label>
+        <InputText @bind-Value="weatherRequest.Address" />
+    </div>
+    <div>
+        <label>PostCode:</label>
+        <InputText @bind-Value="weatherRequest.PostCode" />
+    </div>
     <div>
         <label>City:</label>
         <InputText @bind-Value="weatherRequest.City" />
@@ -98,10 +97,16 @@
         <label>Name:</label>
         <InputText @bind-Value="weatherRequest.Name" />
     </div>
-    <div>
-        <label>Weekly:</label>
-        <InputCheckbox @bind-Value="weatherRequest.Weekly" />
+    <div> 
+        <label>Report Frequency:</label>
+        <label>Weekly</label><input type="radio" checked="@(weatherRequest.Weekly)"
+               name="Frequency" @onchange="@(() => weatherRequest.Weekly = true)" />
+
+        <label>Daily</label><input type="radio" checked="@(!weatherRequest.Weekly)"
+               name="Frequency" @onchange="@(() => weatherRequest.Weekly = false)" />
+
     </div>
+
 
     <button type="submit">Submit</button>
 </EditForm>
@@ -138,6 +143,14 @@
             Email = email;
             Name = name;
             Business = business;
+        }
+        public bool Daily{
+            get{
+                return !Weekly;
+            }
+            set{
+                Weekly = !value;
+            }
         }
 
         public bool Weekly, Genuine;
