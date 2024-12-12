@@ -135,16 +135,7 @@
     const string ORCHESTRATOR_URL = "https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
     public void start(WeatherReportRequest wrr)
     {
-        try
-        {
-            berarertoken = "bearer " + Configuration["BEARER_TOKEN"];
-
-        }
-        catch
-        {
-            berarertoken = "bearer ";
-
-        }
+        berarertoken = Configuration["BEARER_TOKEN"];
 
         startJob(berarertoken, wrr);
     }
