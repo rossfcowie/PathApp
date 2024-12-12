@@ -4,10 +4,9 @@
 @using Newtonsoft.Json.Linq;
 @using Newtonsoft.Json;
 @using System.Text;
-
+@inject IConfiguration Configuration
 @inject NavigationManager Navigation
 <h3>Weather Report Request</h3>
-
 <EditForm Model="@weatherRequest" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -25,8 +24,8 @@
         <InputText @bind-Value="weatherRequest.City" />
     </div>
     <div>
-        <label>Country:</label>
-        <InputText @bind-Value="weatherRequest.Country" />
+        <label>State:</label>
+        <InputText @bind-Value="weatherRequest.State" />
     </div>
     <div>
         <label>Email:</label>
@@ -53,6 +52,8 @@
 </EditForm>
 <p>@myText</p>
 @code {
+
+    string berarertoken;
     private WeatherReportRequest weatherRequest = new WeatherReportRequest("", "", "", "", "", "", "", false, false);
     private string myText = "Not yet submitted";
     private void HandleValidSubmit()
@@ -64,21 +65,21 @@
     const string ORCHESTRATOR_URL = "https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
     public void start(WeatherReportRequest wrr)
     {
-        string bearerToken = "Bearer rt_17DC5C7C0E4D2E3996AD9B7ECD4225CDFE958835F67AFFB15B7B7E9FE6D9A3C7-1";
-        string berarer2 = "Bearer rt_9D689B912DF2D9E0F5F5F7BACE12C36F7C0F6367DA44B070BD3EAFF197CE90D3-1";
 
-        startJob(berarer2, wrr);
+        berarertoken = Configuration["BEARER_TOKEN"];
+
+        startJob(berarertoken, wrr);
     }
     public class WeatherReportRequest
     {
-        public WeatherReportRequest(string address, string postcode, string city, string country, string email, string business, string name, bool weekly, bool genuine)
+        public WeatherReportRequest(string address, string postcode, string city, string state, string email, string business, string name, bool weekly, bool genuine)
         {
             Weekly = weekly;
             Genuine = genuine;
             Address = address;
             PostCode = postcode;
             City = city;
-            Country = country;
+            State = state;
             Email = email;
             Name = name;
             Business = business;
@@ -88,7 +89,7 @@
         public string Address;
         public string PostCode;
         public string City;
-        public string Country;
+        public string State;
         public string Email;
         public string Business;
         public string Name;
@@ -107,10 +108,10 @@
             var json = JsonConvert.SerializeObject(new
             {
                 report.Weekly,
-                Address2 = report.PostCode,
                 Address1 = report.Address,
+                Address2 = report.PostCode,
                 Address3 = report.City,
-                Address4 = report.Country,
+                Address4 = report.State,
                 report.Name,
                 BuisnessName = report.Business,
                 report.Email,
