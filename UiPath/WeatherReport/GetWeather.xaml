@@ -1,0 +1,422 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.Weekly="True" this:Main.Address2="AB11 9NP"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib"
+ xmlns:this="clr-namespace:"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:uix="http://schemas.uipath.com/workflow/activities/uix"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Weekly" Type="InArgument(x:Boolean)" />
+    <x:Property Name="ReportOut" Type="OutArgument(scg:Dictionary(x:Int32, x:String))" />
+    <x:Property Name="Address2" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+  </x:Members>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="45">
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Design.Services.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>CD142C3604E_curatedA.25aUF1hz8aJ1OGuZI3x3ULh2</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="1002,3872" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="textValue">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">NGetText_1</x:String>
+            <x:String x:Key="SourcePropertyName">TextString</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="scg:Dictionary(x:Int32, x:String)" Default="[New Dictionary(Of System.Int32, System.String) From { {1, &quot;&quot;&quot;&quot;&quot;&quot;},{2, &quot;&quot;&quot;&quot;&quot;&quot;},{3, &quot;&quot;&quot;&quot;&quot;&quot;},{4, &quot;&quot;&quot;&quot;&quot;&quot;},{5, &quot;&quot;&quot;&quot;&quot;&quot;},{6, &quot;&quot;&quot;&quot;&quot;&quot;},{7, &quot;&quot;&quot;&quot;&quot;&quot;} }]" Name="WeatherReport" />
+      <Variable x:TypeArguments="ui:UiElement" Name="outputElement">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">NGetText_1</x:String>
+            <x:String x:Key="SourcePropertyName">OutUiElement</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="HighTemp" />
+      <Variable x:TypeArguments="x:String" Name="Weather" />
+      <Variable x:TypeArguments="x:String" Name="LowTemp" />
+      <Variable x:TypeArguments="x:String" Name="ChanceToRain" />
+      <Variable x:TypeArguments="x:String" Name="IsDay" />
+      <Variable x:TypeArguments="x:Boolean" Default="[False]" Name="clicked" />
+      <Variable x:TypeArguments="x:String" Default="2" Name="Day" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap:VirtualizedContainerService.HintSize="654,77" sap2010:WorkflowViewState.IdRef="ManualTrigger_2" />
+    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="IfOpenedByAppBrowser" ContinueOnError="False" DisplayName="Use Browser: " sap:VirtualizedContainerService.HintSize="654,3667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" IsIncognito="False" OpenMode="Always" ScopeGuid="26cfacf3-aa04-4300-b030-0be731480052" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="620,3357" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClosePopup PopupException="{x:Null}" PopupHandled="{x:Null}" DisplayName="Close Popup" EnableAI="True" sap:VirtualizedContainerService.HintSize="586,168" sap2010:WorkflowViewState.IdRef="NClosePopup_1" PopupAppearTimeout="7" PreferredButtons="[New String(){&quot;Reject All&quot;}]" Version="V4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClosePopup>
+            <ui:RepeatNumberOfTimesX DisplayName="Repeat Number of Times" sap:VirtualizedContainerService.HintSize="586,3129" sap2010:WorkflowViewState.IdRef="RepeatNumberOfTimesX_1" NumberOfTimes="[If(Weekly, 7, 1)]" StartAt="1">
+              <ui:RepeatNumberOfTimesX.Body>
+                <ActivityAction x:TypeArguments="x:Int32">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Int32" Name="Day" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,2992" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[Day = 5]" DisplayName="If" sap:VirtualizedContainerService.HintSize="518,449" sap2010:WorkflowViewState.IdRef="If_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,190" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="True" DisplayName="Click 'Tue 103°-1°'" sap:VirtualizedContainerService.HintSize="450,130" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" Version="V4">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-London,England" DesignTimeRectangle="1014, 347, 16, 32" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentid='ForecastDays' tag='SPAN' type='' class='' aaname='' /&gt;" Guid="1072c620-8bc6-4b61-b3f1-9919cdee7886" InformativeScreenshot="c17798fe229b081c0a41d58382c7bf2f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='London, England Weather Forecast | MSN Weather' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive" />
+                            </uix:NClick.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </uix:NClick>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="True" DelayAfter="1" DisplayName="Click 'Tue 108°7°'" sap:VirtualizedContainerService.HintSize="518,139" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" Timeout="3" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-London,England" DesignTimeRectangle="155, 471, 85, 78" FullSelectorArgument="[string.Format(&quot;&lt;webctrl class='mainPart-DS-EntryPoint1-1' type='' parentid='ForecastDays' tag='DIV' aaname='' idx='{0}' /&gt;&quot;, Day)]" FuzzyAccuracy="0.8" Guid="1845a792-044f-4eb7-a4e0-20e05ec8dd09" InformativeScreenshot="faba3bf7e4e05d584afb0b41f23d0cd8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='London, England Weather Forecast | MSN Weather' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="127, 459, 940, 120" ElementType="List" FuzzySelectorArgument="&lt;webctrl parentid='ForecastDays' tag='UL' type='' class='cardContainer-DS-EntryPoint1-2' aaname='' /&gt;" Guid="dc587222-0205-41ca-9d05-7107f81002a1" SearchSteps="FuzzySelector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                    <uix:NGetText ContinueOnError="True" DisplayName="Get Text 'Tue 108°Cloudy7°31%'" sap:VirtualizedContainerService.HintSize="518,139" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" Timeout="3" Version="V4">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-London,England" DesignTimeRectangle="309, 471, 260, 78" FullSelectorArgument="[string.Format(&quot;&lt;webctrl class='mainPart-DS-EntryPoint1-1' idx='{0}' parentid='ForecastDays' tag='DIV' /&gt;&quot;, Day)]" Guid="954707d8-3918-46c1-adc2-f291bc420b59" InformativeScreenshot="2613067effef76ce3b3af01ce30cb75c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='London, England Weather Forecast | MSN Weather' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                      </uix:NGetText.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NGetText>
+                    <WriteLine DisplayName="Write Line 1" sap:VirtualizedContainerService.HintSize="518,122" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[string.Format(&quot;{0}&quot;, textValue)]" />
+                    <uix:NGetText ContinueOnError="True" DisplayName="Get Text High" sap:VirtualizedContainerService.HintSize="518,139" sap2010:WorkflowViewState.IdRef="NGetText_8" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" TextString="[HighTemp]" Timeout="3" Version="V4">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-Laurencekirk,Scotland" CVScreenId="452e0ca3-667c-49da-bb3b-ecb49a007f9b" CvTextArea="210, 598, 19, 15" CvType="AnyWordGroup" DesignTimeRectangle="212, 594, 16, 24" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='DIV' parentid='ForecastDays' type='' class='topTemp-DS-EntryPoint1-1 temp-DS-EntryPoint1-1 tempSelected-DS-EntryPoint1-1' /&gt;" Guid="46356379-5736-4144-9382-7c0e5e353be0" InformativeScreenshot="be76d119e6a802c6581bbdfe94b77505.png" ScopeSelectorArgument="&lt;html title='Laurencekirk, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="128, 558, 309, 108" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='DIV' parentid='ForecastDays' class='mainPart-DS-EntryPoint1-1' idx='{0}' /&gt;&quot;, Day)]" Guid="4a5d1534-b93a-4999-8203-3146c12f1501" SearchSteps="Selector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <uix:NGetText ContinueOnError="True" DisplayName="Get Text Day" sap:VirtualizedContainerService.HintSize="518,139" sap2010:WorkflowViewState.IdRef="NGetText_9" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" TextString="[IsDay]" Version="V4">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-Laurencekirk,Scotland" CVScreenId="c9ca6fe3-e9ad-4cf6-9679-c4afcf83b25c" CvTextArea="149, 573, 42, 16" CvType="AnyWordGroup" DesignTimeRectangle="473, 530, 30, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='P' parentid='ForecastDays' type='' class='headerV3-DS-EntryPoint1-1 headerV3Selected-DS-EntryPoint1-1' /&gt;" Guid="2cdf7395-9002-40c6-82a5-1da0171a7fcc" InformativeScreenshot="d5b39afd5b2dffff544df94d61200f83.png" ScopeSelectorArgument="&lt;html title='Laurencekirk, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="473, 530, 85, 78" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='DIV' parentid='ForecastDays' class='mainPart-DS-EntryPoint1-1' idx='{0}' /&gt;&quot;, Day)]" Guid="90c7f8fa-c420-42db-9c65-7a772a05985b" SearchSteps="Selector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <uix:NGetText ContinueOnError="True" DisplayName="Get Text Low" sap:VirtualizedContainerService.HintSize="518,139" sap2010:WorkflowViewState.IdRef="NGetText_10" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" TextString="[LowTemp]" Version="V4">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-Laurencekirk,Scotland" CVScreenId="4c78c53e-aded-4249-bb14-ccbe6288215c" CvTextArea="210, 588, 18, 16" CvType="AnyWordGroup" DesignTimeRectangle="1198, 624, 23, 24" ElementType="Text" FuzzyMatches="10000" FuzzySelectorArgument="&lt;webctrl tag='DIV' parentid='ForecastDays' type='' class='temp-DS-EntryPoint1-1 tempSelected-DS-EntryPoint1-1' /&gt;" Guid="de7981cd-5a8e-4f67-bb27-0dfe66205f03" InformativeScreenshot="a979c0a3618af0d2e06fbd3f8b77250f.png" ScopeSelectorArgument="&lt;html title='Laurencekirk, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1138, 570, 85, 78" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='DIV' parentid='ForecastDays' class='mainPart-DS-EntryPoint1-1' idx='{0}' /&gt;&quot;, Day)]" Guid="d90cc91d-e62e-4711-9f36-282f98b8a51d" SearchSteps="Selector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <ui:CommentOut DisplayName="Disabled activities 13" sap:VirtualizedContainerService.HintSize="518,336" sap2010:WorkflowViewState.IdRef="CommentOut_14">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,241" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="aaname" DisplayName="Get Attribute '3°'" sap:VirtualizedContainerService.HintSize="450,181" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_1" Result="[Weather]" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" Version="V4">
+                            <uix:NGetAttributeGeneric.Target>
+                              <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-Torry,Scotland" DesignTimeRectangle="207, 537, 26, 26" ElementType="Icon" FuzzySelectorArgument="&lt;webctrl tag='IMG' aria-role='presentation' parentid='weatherDailyForecastSection' type='' class='conditionImg-DS-EntryPoint1-1' /&gt;" Guid="41f89705-7d8e-4df9-865a-93faaab245e0" InformativeScreenshot="e60ce1e0029e578e88c8d93eb393ec17.png" ScopeSelectorArgument="&lt;html title='Torry, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="5f68e936-cd4b-4927-877b-99f05a7f28be" DesignTimeRectangle="196, 526, 48, 80" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='DIV' parentid='weatherDailyForecastSection' class='conditionHalfSection-DS-EntryPoint1-1' idx='{0}*2-1' /&gt;&quot;, Day)]" Guid="5d8fa14a-cfa9-4211-9588-52c2d356e18f" SearchSteps="Selector" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NGetAttributeGeneric.Target>
+                          </uix:NGetAttributeGeneric>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
+                    <uix:NGetText ContinueOnError="True" DisplayName="Get Text Weather" sap:VirtualizedContainerService.HintSize="518,139" sap2010:WorkflowViewState.IdRef="NGetText_11" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" TextString="[Weather]" Timeout="3" Version="V4">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-Laurencekirk,Scotland" CVScreenId="720015f5-852e-4cda-ab0f-f1f96a23c9e6" CvTextArea="353, 558, 60, 16" CvType="AnyWordGroup" DesignTimeRectangle="354, 555, 59, 24" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='DIV' parentid='ForecastDays' class='cap-DS-EntryPoint1-1' type='' /&gt;" Guid="ea2bfe5f-8a27-4791-844e-0638907ed40c" InformativeScreenshot="725a2e991eb9a4c93433734faae90d22.png" ScopeSelectorArgument="&lt;html title='Laurencekirk, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="128, 518, 309, 108" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='DIV' parentid='ForecastDays' class='mainPart-DS-EntryPoint1-1' idx='{0}' /&gt;&quot;, Day)]" Guid="8658883b-5630-4106-9539-0704b8ec7145" SearchSteps="Selector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                    </uix:NGetText>
+                    <ui:CommentOut DisplayName="Disabled activities" sap:VirtualizedContainerService.HintSize="518,285" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="484,190" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NGetText ContinueOnError="True" DisplayName="Get Text Chance" sap:VirtualizedContainerService.HintSize="450,130" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="26cfacf3-aa04-4300-b030-0be731480052" TextString="[ChanceToRain]" Timeout="3" Version="V4">
+                            <uix:NGetText.Target>
+                              <uix:TargetAnchorable BrowserURL="msn.com/en-gb/weather/forecast/in-Laurencekirk,Scotland" CVScreenId="17befc88-2786-4352-a51f-17c8e7917972" CvTextArea="419, 589, 25, 12" CvType="AnyWordGroup" DesignTimeRectangle="564, 584, 25, 24" FuzzySelectorArgument="&lt;webctrl tag='DIV' parentid='ForecastDays' type='' class='precipitationV3-DS-EntryPoint1-1' aaname='' /&gt;" Guid="63b22612-45ec-4ea2-8e7f-7f487d4b9b2a" InformativeScreenshot="b471d1750a996d43bc9eb124b6952099.png" ScopeSelectorArgument="&lt;html title='Laurencekirk, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target DesignTimeRectangle="504, 530, 85, 78" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='DIV' parentid='ForecastDays' class='mainPart-DS-EntryPoint1-1' idx='{0}' /&gt;&quot;, Day)]" Guid="8fa358a2-f9a1-47c6-bcaf-e31fc122869d" SearchSteps="Selector" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NGetText.Target>
+                          </uix:NGetText>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
+                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="518,793" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                      <TryCatch.Try>
+                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="484,393" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Set Variable Value 4" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_10">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[ChanceToRain]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[LowTemp.Substring(LowTemp.IndexOf("°")+1)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Set Variable Value 3" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_9">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[LowTemp]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[LowTemp.Substring(0, LowTemp.IndexOf("°")+1)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Set Variable Value" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[WeatherReport(Day)]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[string.Format("{0}:{1}{2}High:{3}{4}Low:{5}{6}{8}{7}", IsDay, Weather, Environment.NewLine, HighTemp, Environment.NewLine, LowTemp, Environment.NewLine, ChanceToRain,if(ChanceToRain.length&gt;0,"Chance of Rain:",""))]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </TryCatch.Try>
+                      <TryCatch.Catches>
+                        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                          <ActivityAction x:TypeArguments="s:Exception">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </ActivityAction>
+                        </Catch>
+                      </TryCatch.Catches>
+                      <TryCatch.Finally>
+                        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </TryCatch.Finally>
+                    </TryCatch>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="518,113" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[WeatherReport(Day)]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:RepeatNumberOfTimesX.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:RepeatNumberOfTimesX>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Edge" InformativeScreenshot="102c76b68c1a43ec2361f158b1a80e15.png" Selector="&lt;html title='Laurencekirk, Scotland Weather Forecast | MSN Weather' app='chrome.exe' /&gt;" Title="Laurencekirk, Scotland Weather Forecast | MSN Weather" Url="[string.Format(&quot;https://www.msn.com/en-gb/weather/forecast/in-{0}&quot;, Address2)]" Version="V1">
+          <uix:TargetApp.Arguments>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.Arguments>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <Assign DisplayName="Set Variable Value 2" sap:VirtualizedContainerService.HintSize="654,105" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)">[ReportOut]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)">[WeatherReport]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
