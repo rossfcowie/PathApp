@@ -9,7 +9,7 @@ namespace APICall
     class APICall
     {
         const string ORCHESTRATOR_URL = "http://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
-
+        public static string myText = "";
         public static  void start(WeatherReportRequest wrr)
         {
             string bearerToken = "Bearer rt_17DC5C7C0E4D2E3996AD9B7ECD4225CDFE958835F67AFFB15B7B7E9FE6D9A3C7-1";
@@ -65,7 +65,7 @@ namespace APICall
             request.AddJsonBody(content);
 
             RestResponse response = await client.ExecuteAsync(request);
-            Console.WriteLine(response.Content);
+            myText =(response.Content);
         }
     }
 
