@@ -35,10 +35,18 @@
     }
 
     form input[type="text"],
-    form input[type="email"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
     form input[type="radio"] {
-    width: 100%;
+    width: 30%;
     padding: 10px;
+    display:inline;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -101,10 +109,10 @@
     </div>
     <div> 
         <label>Report Frequency:</label>
-        <label>Weekly</label><input type="radio" checked="@(weatherRequest.Weekly)"
+        <label style="display: inline;">Weekly</label><input type="radio" checked="@(weatherRequest.Weekly)"
         name="Frequency" @onchange="@(() => weatherRequest.Weekly = true)" />
 
-        <label>Daily</label><input type="radio" checked="@(!weatherRequest.Weekly)"
+        <label style="display: inline;">Daily</label><input type="radio" checked="@(!weatherRequest.Weekly)"
         name="Frequency" @onchange="@(() => weatherRequest.Weekly = false)" />
 
     </div>
