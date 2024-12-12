@@ -128,8 +128,15 @@
     private string myText = "Not yet submitted";
     private void HandleValidSubmit()
     {
-        myText = "submitted";
-        start(weatherRequest);
+        berarertoken = Configuration["BEARER_TOKEN"]; 
+        if (!string.IsNullOrEmpty(berarertoken)) { 
+            myText = "Token retrieved successfully."; 
+        } else { 
+            myText = "Failed to retrieve the token."; 
+        } // Proceed with the API call if token is retrieved successfully 
+        if (!string.IsNullOrEmpty(berarertoken)) 
+        { start(weatherRequest); 
+        }
     }
 
     const string ORCHESTRATOR_URL = "https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
