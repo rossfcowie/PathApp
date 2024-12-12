@@ -6,19 +6,78 @@
 @using System.Text;
 @inject IConfiguration Configuration
 @inject NavigationManager Navigation
+<style>
+
+    h3 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+            form button[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+    p {
+        text-align: center;
+        font-size: 14px;
+        color: #333;
+    }
+
+</style>
 <h3>Weather Report Request</h3>
 <EditForm Model="@weatherRequest" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-
-    <div>
-        <label>Address:</label>
-        <InputText @bind-Value="weatherRequest.Address" />
-    </div>
-    <div>
-        <label>PostCode:</label>
-        <InputText @bind-Value="weatherRequest.PostCode" />
-    </div>
+        <div>
+            <label>Address:</label>
+            <InputText @bind-Value="weatherRequest.Address" />
+        </div>
+        <div>
+            <label>PostCode:</label>
+            <InputText @bind-Value="weatherRequest.PostCode" />
+        </div>
     <div>
         <label>City:</label>
         <InputText @bind-Value="weatherRequest.City" />
@@ -43,10 +102,6 @@
         <label>Weekly:</label>
         <InputCheckbox @bind-Value="weatherRequest.Weekly" />
     </div>
-    <div>
-        <label>Genuine:</label>
-        <InputCheckbox @bind-Value="weatherRequest.Genuine" />
-    </div>
 
     <button type="submit">Submit</button>
 </EditForm>
@@ -54,7 +109,7 @@
 @code {
 
     string berarertoken;
-    private WeatherReportRequest weatherRequest = new WeatherReportRequest("", "", "", "", "", "", "", false, false);
+    private WeatherReportRequest weatherRequest = new WeatherReportRequest("", "", "", "", "", "", "", false);
     private string myText = "Not yet submitted";
     private void HandleValidSubmit()
     {
@@ -72,10 +127,10 @@
     }
     public class WeatherReportRequest
     {
-        public WeatherReportRequest(string address, string postcode, string city, string state, string email, string business, string name, bool weekly, bool genuine)
+        public WeatherReportRequest(string address, string postcode, string city, string state, string email, string business, string name, bool weekly)
         {
             Weekly = weekly;
-            Genuine = genuine;
+            Genuine = true;
             Address = address;
             PostCode = postcode;
             City = city;
