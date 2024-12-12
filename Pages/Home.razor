@@ -46,12 +46,14 @@
 
     <button type="submit">Submit</button>
 </EditForm>
-<p>@APICall.myText</p>
+<p>@myText</p>
 @code {
     private APICall.WeatherReportRequest weatherRequest = new APICall.WeatherReportRequest("", "", "", "", "", "", "", false, false);
-   
+    private string myText = "Not yet submitted";
     private void HandleValidSubmit()
     {
+        myText = "submitted";
         APICall.start(weatherRequest);
+        myText = APICall.myText;
     }
 }
