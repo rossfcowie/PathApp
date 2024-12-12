@@ -135,8 +135,16 @@
     const string ORCHESTRATOR_URL = "https://cloud.uipath.com/rosscowie/DefaultTenant/orchestrator_";
     public void start(WeatherReportRequest wrr)
     {
+        try
+        {
+            berarertoken = Configuration["BEARER_TOKEN"];
 
-        berarertoken = Configuration["BEARER_TOKEN"];
+        }
+        catch
+        {
+            berarertoken = "";
+
+        }
 
         startJob(berarertoken, wrr);
     }
@@ -200,9 +208,9 @@
                 Address2 = report.PostCode,
                 Address3 = report.City,
                 Address4 = report.State,
-                report.Name,
+                Name = report.Name,
                 BuisnessName = report.Business,
-                report.Email,
+                Email = report.Email,
                 report.Genuine
             });
 
