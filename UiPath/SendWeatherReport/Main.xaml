@@ -1,0 +1,436 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.Weekly="False" this:Main.Address1="198 Victoria Road" this:Main.Address3="Torry" this:Main.Address4="Scotland" this:Main.Name="Ross" this:Main.BuisnessName="Rossico" this:Main.Email="rossfcowie@gmail.com" this:Main.Genuine="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_curatedAddDocumentToEnvelope_Upload.Bundle;assembly=CD142C3604E_curatedA.8w5VakUUeO1KhLo5iq9OY3" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Weekly" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Address2" Type="InArgument(x:String)" />
+    <x:Property Name="Address1" Type="InArgument(x:String)" />
+    <x:Property Name="Address3" Type="InArgument(x:String)" />
+    <x:Property Name="Address4" Type="InArgument(x:String)" />
+    <x:Property Name="Name" Type="InArgument(x:String)" />
+    <x:Property Name="BuisnessName" Type="InArgument(x:String)" />
+    <x:Property Name="Email" Type="InArgument(x:String)" />
+    <x:Property Name="Genuine" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <this:Main.Address2>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:Main.Address2>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="53">
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>UiPath.GSuite.Activities.Docs.Enums</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.GSuite.Docs.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Docs.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_templates_Retrieve.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_curatedCreateEnvelopeByTemplate_Create.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_envelopes_sub_form_data_Retrieve.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_curatedAddDocumentToEnvelope_Upload.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_templates_sub_recipients_Replace.Bundle</x:String>
+      <x:String>System.ComponentModel.DataAnnotations</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_curatedAddRecipientToEnvelope_Create.Bundle</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Helpers.TypeDetailsCustomization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_accounts_Create.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_templates_sub_recipients_Create.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_users_Create.Bundle</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>CD142C3604E_users_Cr.zWMng12eUhH1HvUi029yimU</AssemblyReference>
+      <AssemblyReference>CD142C3604E_template.6vYtJ1LMbcG19PpsctZXGO3</AssemblyReference>
+      <AssemblyReference>CD142C3604E_accounts.HxOsS43FTQP1OrVgh2kzDX21</AssemblyReference>
+      <AssemblyReference>CD142C3604E_curatedA.8w5VakUUeO1KhLo5iq9OY3</AssemblyReference>
+      <AssemblyReference>CD142C3604E_curatedA.YMYhi21WOMP1Cegct5mIaj1</AssemblyReference>
+      <AssemblyReference>CD142C3604E_curatedC.XncMx5Z0qM1Izj2f3m568D1</AssemblyReference>
+      <AssemblyReference>CD142C3604E_envelope.bc6zr6Y4OJ1fKZrX20fws64</AssemblyReference>
+      <AssemblyReference>CD142C3604E_template.82ycv9g9sC1YcVhn61BHA2</AssemblyReference>
+      <AssemblyReference>CD142C3604E_template.ZSRVG1Qh04R1Db1Ks2dmq011</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Annotations</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>CD142C3604E_curatedC.eQVUu2tBF9S1T2LMU3S1EJU3</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap:VirtualizedContainerService.HintSize="1267,640.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Report" />
+      <Variable x:TypeArguments="scg:Dictionary(x:Int32, x:String)" Name="ReportIn" />
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="document">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">CreateDocumentConnections_1</x:String>
+            <x:String x:Key="SourcePropertyName">NewDocument</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="ugdm:GDriveLocalItem" Name="file">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">DownloadFileConnections_1</x:String>
+            <x:String x:Key="SourcePropertyName">NewResult</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="envelopeid" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap:VirtualizedContainerService.HintSize="450,77" sap2010:WorkflowViewState.IdRef="ManualTrigger_2" />
+    <ui:InvokeProcess ArgumentsVariable="{x:Null}" ContinueOnError="False" DisplayName="Invoke Process" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="InvokeProcess_1" Level="Info" LogEntry="WithArguments" LogExit="WithArguments" ProcessName="WeatherReport" Timeout="00:06:00">
+      <ui:InvokeProcess.Arguments>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="Weekly">[Weekly]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Address2">[Address2]</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)" x:Key="ReportOut">[ReportIn]</OutArgument>
+      </ui:InvokeProcess.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeProcess>
+    <uga:CreateDocumentConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualEntryParentFolderId="{x:Null}" ParentFolderExisting="{x:Null}" AuthScopesInvalid="False" BrowserParentFolderFriendlyName="Unsigned" BrowserParentFolderId="https://drive.google.com/drive/folders/1OkmeXZkN7UhzVNUvGFhtC8YuJYZud9n6" ConflictResolution="[UiPath.GSuite.Activities.Drive.Enums.ConflictBehavior.Rename]" ConnectionId="588de85e-9d4f-47a8-a8a5-45fafc38bca8" DisplayName="Create Document" DocumentName="[string.Format(&quot;{0}{1}{2}&quot;, Name, BuisnessName, Weekly)]" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CreateDocumentConnections_1" NewDocument="[document]" ParentFolderInputMode="Browse" UseConnectionService="True">
+      <uga:CreateDocumentConnections.Item>
+        <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1OkmeXZkN7UhzVNUvGFhtC8YuJYZud9n6" ConnectionKey="588de85e-9d4f-47a8-a8a5-45fafc38bca8" FullPathHint="My Drive/Templates/Unsigned" InputMode="Browse">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+              <usau:BackupSlot.BackupValues>
+                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+        </ugam:DriveItemArgument>
+      </uga:CreateDocumentConnections.Item>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:CreateDocumentConnections>
+    <uga:WriteTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID1}" ManualFileId="{x:Null}" Section="{x:Null}" AuthScopesInvalid="False" ConnectionId="0d70e440-2477-4bc4-a5a7-6b0b494ae9a4" DisplayName="Write Text" File="[document]" FileInputMode="UseExisting" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="WriteTextConnections_1" MatchCase="False" MatchMode="Contains" Text="[string.Format(&quot;By signing below I {0} hereby certify that I will receive the weather for the [WeekDay], at the location of my business {1}, at the address{2}{3}{4}{5}{6}{7}{8}{9}{10}Please find the Weather report below.{11}[WeatherReport]{12}Signed{13}{14}_______________________x&quot;, Name, BuisnessName, Environment.NewLine, Address1, Environment.NewLine, Address2, Environment.NewLine, Address3, Environment.NewLine, Address4, Environment.NewLine, Environment.NewLine, Environment.NewLine, Environment.NewLine, Environment.NewLine)]" UseConnectionService="True" WriteTextMode="BeginningOfDocument" WriteTextStyle="NormalText">
+      <uga:WriteTextConnections.Item>
+        <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[document]" InputMode="UseExisting">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="UseExisting">
+              <usau:BackupSlot.BackupValues>
+                <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+                  <x:Null />
+                  <x:Null />
+                </scg:List>
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+          <ugam:DriveItemArgument.FullPathHint>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ugam:DriveItemArgument.FullPathHint>
+        </ugam:DriveItemArgument>
+      </uga:WriteTextConnections.Item>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:WriteTextConnections>
+    <uga:FindAndReplaceTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID2}" ManualFileId="{x:Null}" MatchCase="{x:Null}" AuthScopesInvalid="False" ConnectionId="0d70e440-2477-4bc4-a5a7-6b0b494ae9a4" DisplayName="Find and Replace WeekDay" File="[document]" FileInputMode="UseExisting" FindWhat="%[WeekDay]" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextConnections_5" ReplaceBehavior="Once" ReplaceWith="[If(Weekly,&quot;week&quot;,&quot;day&quot;)]" UseConnectionService="True">
+      <uga:FindAndReplaceTextConnections.Item>
+        <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[document]" FullPathHint="My Drive/DocuSign" InputMode="UseExisting">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="UseExisting">
+              <usau:BackupSlot.BackupValues>
+                <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+                  <InArgument x:TypeArguments="x:String">https://docs.google.com/document/d/1t5_Vu2J0iM2ktrbgMdV6w5gtaGyfFS1YwikrlbrP-sU/edit?usp=drivesdk</InArgument>
+                  <InArgument x:TypeArguments="x:String">DocuSign</InArgument>
+                </scg:List>
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+        </ugam:DriveItemArgument>
+      </uga:FindAndReplaceTextConnections.Item>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:FindAndReplaceTextConnections>
+    <uga:FindAndReplaceTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID3}" ManualFileId="{x:Null}" MatchCase="{x:Null}" AuthScopesInvalid="False" ConnectionId="0d70e440-2477-4bc4-a5a7-6b0b494ae9a4" DisplayName="Find and Replace WeatherReport" File="[document]" FileInputMode="UseExisting" FindWhat="%[WeatherReport]" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="FindAndReplaceTextConnections_2" ReplaceBehavior="Once" ReplaceWith="[string.Format(&quot;{0}&quot;, String.Join(Environment.NewLine+Environment.NewLine, ReportIn.Values))]" UseConnectionService="True">
+      <uga:FindAndReplaceTextConnections.Item>
+        <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[document]" FullPathHint="My Drive/DocuSign" InputMode="UseExisting">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID3" StoredValue="UseExisting">
+              <usau:BackupSlot.BackupValues>
+                <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+                  <InArgument x:TypeArguments="x:String">https://docs.google.com/document/d/1t5_Vu2J0iM2ktrbgMdV6w5gtaGyfFS1YwikrlbrP-sU/edit?usp=drivesdk</InArgument>
+                  <InArgument x:TypeArguments="x:String">DocuSign</InArgument>
+                </scg:List>
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+        </ugam:DriveItemArgument>
+      </uga:FindAndReplaceTextConnections.Item>
+    </uga:FindAndReplaceTextConnections>
+    <uga:DeleteTextConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" FileIdBackup="{x:Reference __ReferenceID4}" ManualFileId="{x:Null}" MatchCase="{x:Null}" Section="{x:Null}" AuthScopesInvalid="False" ConnectionId="0d70e440-2477-4bc4-a5a7-6b0b494ae9a4" DeleteBehavior="AllReccurences" DeleteTextMode="Text" DisplayName="Delete Text" File="[document]" FileInputMode="UseExisting" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="DeleteTextConnections_1" MatchMode="Contains" Text="[&quot;&quot;&quot;&quot;&quot;&quot;]" UseConnectionService="True">
+      <uga:DeleteTextConnections.Item>
+        <ugam:DriveItemArgument BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[document]" InputMode="UseExisting">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID4" StoredValue="UseExisting">
+              <usau:BackupSlot.BackupValues>
+                <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+                  <x:Null />
+                  <x:Null />
+                </scg:List>
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+          <ugam:DriveItemArgument.FullPathHint>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ugam:DriveItemArgument.FullPathHint>
+        </ugam:DriveItemArgument>
+      </uga:DeleteTextConnections.Item>
+    </uga:DeleteTextConnections>
+    <uga:DownloadFileConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" FileFriendlyName="{x:Null}" ManualEntryFileId="{x:Null}" ManualFileId="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" ConnectionId="588de85e-9d4f-47a8-a8a5-45fafc38bca8" DisplayName="Download File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" File="[document]" FileInputMode="UseExisting" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_1" NewResult="[file]" UseConnectionService="True">
+      <uga:DownloadFileConnections.FileIdBackup>
+        <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID5" StoredValue="UseExisting">
+          <usau:BackupSlot.BackupValues>
+            <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="2">
+              <x:Null />
+              <x:Null />
+            </scg:List>
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </uga:DownloadFileConnections.FileIdBackup>
+      <uga:DownloadFileConnections.Item>
+        <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID5}" BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" Existing="[document]" InputMode="UseExisting">
+          <ugam:DriveItemArgument.FullPathHint>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </ugam:DriveItemArgument.FullPathHint>
+        </ugam:DriveItemArgument>
+      </uga:DownloadFileConnections.Item>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:DownloadFileConnections>
+    <If Condition="[Genuine]" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,635" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACr1X224bNxD9FWKfJdWyJSc2kAKW5KBq7diQnLhoEwTU7khivCI3JFe2YgTIh7Q/ly/pIfei1cWy0yaFH6zlDIecc+bG++CloDgyXSUtF5J0cHwfDInrcMpHMWXC4PjPd7WgL5PUlgv3wSs+o+A4sDRLYm6pHwW1oCcMPha56CoXOQGZUIvECiWdYJEQs1NiEopMadbvMTX2K4W5BuuvLjBhmFSWjVUqIyakF0ZaJfVI3coaW6iUhVyysdDGMpym4nhVh1mRL42UtWrGrGITsoznq3zORey8Ls80jOMsyLC3uHJ5H1xbk9WC5msCODPWMP82OBO4ygnMDyhUOjL1nwtIzNsAqDgcAIeBFTnB91Bpe6Ejx0KzFpwpdZMmjpCL0QcK7RrgJihU3vA43aDiktsp1n7aVHd2HIWBQx+rlW3vPnuqxAQs3UOdR51Fj8Y8jW1wbHVKsKuMyGm81GLG9SLAJh8XJ6ET5OEyoI+p0BQV+7zGmQp5vrmjIrezjCNjuU3NRgwNy+WVCOrLSISeIQc9yTnFCgRlRhoMiIiIzR0uht06/kJNOFlOwOhSnWtiX7/8FWk+tl+//I3Y0hVF5teX2hBC2ZCMNnURJk7gfq9cCCGmKRSJIGlNYzfl+7XgVKYzn1wFpT13BQ9TsTLEMcHnd1WetlMyIJOADSoI+FZCaIZ0GKY+9DZoOXVCZpbS1fwGBLmMxagqRXJ7kwzRZ/jEYzOCHpBxP10WVqBixXUz+irAow4YimEaMm5yymtQE8jckpEqC4/gfvA4lluxqgUXssvlnJsM0gp2pSP+ex28QSFlMU147KvgVgzHKUBZ6hQwlta/FaX/AFLrB4Lkg2kHSj5stgKUBRSPIo2Y2gKPD8SFQYXz6ek7iBi7yuEKFeMjldqsSagwnbnAc6Ho3HT/7RQo5sb/z4Bs/0CsByreFZDomttDMTWkWURjZHPktXwBXIP7JZbojqOdUM0hdJIkMcCG3SaAWlvaL5aG8JR0qTCBqeLjNBJWOREjGzZY3opwA7CzspXtRvTw+yPqQ68Tp3r0QHEcZQY2oXSCByrilNssnJY1sWwly+K429dnD/g6xAwio3/pLW6ibgfEjTe87jBGHHWLCy7FK05f+wHKNZ3VgPHzGjIKWYVGUW3Mznc2U2jPPEkwv2nhBqty4xKAkUIocrmKwPPvhwD67EVqtw6+xWW3DL6nhR/93gYYFZkrEeHUEe6rBMI6Nb5ULOfmHTwfVbz07f4jhh2MaWMeG9rW/rPvbqrdUQ9NAZm3u0LhV2Hfh5mRrr924VFnUR34twKyNR8yK6wEprNghSGmsiECg3aqUXmWiLwWbsBt9KWlCe4Ca0PScxFSw02hc1BOpjG8PpU2+9ntNVv73YPDvdbpY7d/nwkaHTw0Ymo8TbvGtp3Q+F2G53ftP/Y+njf7nz7sjw9m7cPnvWaNvSFtcOkXzcae+8N2FLZU0wtJqdU8rrHLdIRK+RstrtQNyRcSs0DwOM1P5BPPOQMivXYR6gii1xLdkSKHMZ6EswRW8B4qD+tLNDcZ0iXX4NXCBZdhuSs4zDuDs/CalKBNadwey6mAoSneYCHieyLLH9DMyVrkrBbBWVt98jwebr9Ym5yTnSp441LezcxBl4dTiipvJH/dynPHZbP7F4z2wsOjZ/vN+mHUfFZvhW1eH7Vb7froOadWe59a0cHRMqi7Kk5n/p0TXONGU3TGASXITKg8yRKqytBnNBrmjNt1s8FG/qwew+rsScd4SjMQOlrdooP34bwDAet56wND+YPtkoc3aEJVNo9W2cwv0wN9rvFWRdVdiIKSwFU3cnp3Zfy3U3+RUFYA3AFebSMeLoZXlRfx4ybPuJykwMJXeXyf87tLfA7FJyw19/Zgn5sO9t+Aw+4U2i608iS5ojvbiVV443H9/A+3Us0EYhEAAA==" ConnectionId="0962332f-78f8-4d8e-bcbb-82c519d58757" DisplayName="Create Envelope Using Template" sap:VirtualizedContainerService.HintSize="450,470" sap2010:WorkflowViewState.IdRef="ConnectorActivity_2" UiPathActivityTypeId="7a3bcab0-909f-3420-9c41-9677a9912998">
+            <isactr:ConnectorActivity.FieldObjects>
+              <isactr:FieldObject Name="templateId" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">b0c69721-6d17-4c5a-b545-b8ae452e4d39</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="status" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">Draft</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="emailSubject" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[string.Format("{1} Weather Report for {0}", BuisnessName,If(Weekly,"Weekly","Daily"))]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="recipientName" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[string.Format("{0}", Name)]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="recipientEmail" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[Email]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="recipientRole" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">Client</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="emailBlurb" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[String.Format("Please find enclosed the weather report for {0}", If(Weekly,"this week","today"))]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="allowReassign" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="out_envelopeId" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <OutArgument x:TypeArguments="x:String">[envelopeId]</OutArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="Jit_curatedCreateEnvelopeByTemplate" Type="FieldArgument" />
+            </isactr:ConnectorActivity.FieldObjects>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </isactr:ConnectorActivity>
+          <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACq1W2W7bRhT9lQEf+kTRWu3EgFvEctKosSM1slMETRCMyCtxKmqGmcWOahjIh7Q/ly/pGW6hbCdxiwJ+MO/M3PWcc3UdPBOUJWaspOVCkg4Or4M5cR2nfJFReRgc/v4uDCYyd7YxXAcv+YaCw2ApMgrC4ESYPOPbyniiYrchaf0BmViL3AolcfCsvH2+zVtv50rbqU588F7xQKxw9zqYKSOqdzMtNlxvg5sweEUfnNCUBIdWOwrLAk5VzKurZy6zIufaB5+YM7KpSmZcIzHrI/hHN2GTPslLylROk+ROEU+roztF+OyZTYlJXGRKs8kJU8vCUruL2GTXwIRhUlm2VE4mTMjiMNEq7yTqSoZsqxyLuWRLoY1liKaybPcOs6IyLZS1asOsYiuyjFdWfslF5ofWxDSMIxbO8LZOuckHaWuyWtDlrQMUs9TePYx+jnNMg/E8z0TZYtb5kb0NzrjkK3obMMsX3vKzQjqfP/01x9Q/f/rbu8fXiebL4hNFU2Gpm2q8Fe/GcLtm8OrDaTI5xVZcttLxJXw70YtXpxF7hoD0kW/yjEImyt7jwLcdUVNrc3O4t4cyEtqoKEFdHmVRrDZ7SQVWs5cQSJCZvQGn/QMaDTvLg/1eZ8hHiw7vD6izGNHw0WA0fNyPY+Qf3smnjPaQ52+DLzQwqE6udonQD4NTpdYu90SYLv5AW24h1vzkq3+fcEtH/W632+n28PeDsdw6cxRrwkESGhQWokr0BZ9B7fU1z9wd+M+4TWHb+18i+Gy9UAS0QU/nrigBp62I727abD9VPDnentCSg8A1ue+XgILyTwAUJStx+p4o/OoITx8iCDUa7hGEWtUw6buaACQ4KT44aqlB7YtdCZtWnG/gYlNumSRKjGfywqMfsWJKPHd4klASsTeVKnhaiOV2x+kk8aKhDWXLiAFJoGeWlVdKEWmip9wUZiTWKzFrKFbgVXOjHxY8MwpMDNnC2UaPnPEU3DLpNgswuCBcDz60cquU9XvDA0B6f3gQfYGzkJZW6OwOngeYidIbbssLg37RwWLWFRZH3ajbxsPEPBfogrwHCvMi/TYYWqM+Vom3NwNd+O/boywu3Z6hv4lWpmBxXuPDUxo9SCDcXmAodoUG5k7nytA9HP5aATf/bVMB21Nn7928vwj7Pnbak/BJktTgPFftvfXAhQZIwEUh9wUezhWrLzNVMNf3ATLstCw4XlV9IbxmRBM/cSQCb3PSlyKmyLPzEvMiE81/eypt+e/4pDfsjwf73eHTb6b+/iLPIAfRMfZGRtEDrobsPt/Ro6vRa76+uKBp70V6qkbiw+Ppm0HIXpM2yPaoFwF1wB0bYxZO05EkZzXPQjZzC6ymF7Q9V2uSR9JlWVDqDBmAeMkzA1C+wsaCCNHXdKecXTFfjKs4ra9i4vjFVTtoHd14XbyQYiko8X3Gj7NNDodY7U3ciYQKy5gauAAZ10FVFeIWdSEsftdJTE9pFAKzA9xs2qnXX/MPblYD21aTHZcdxMHO8vkO3p5jz5Y49oKt0CiUMuZxSklr7/hcG/uxVleG9MTSprJXQo+MK3Gf8XiNHxvt6h7vVtcSaP9zpX3UfoWuNAXtUqMq96ss+Jd9mOZU0sFzpMDnneZM5+etlfsdf6dcrhxaUGxsfJ/xjzN8zsWfMPW60M3n3BxjIa8hQuMUt32TK6yc00d7nKl4XbTz5h/z38x58wsAAA==" ConnectionId="0962332f-78f8-4d8e-bcbb-82c519d58757" DisplayName="Add Document to Envelope" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="ConnectorActivity_4" UiPathActivityTypeId="01d69d83-8fe4-37be-b2f6-85786e52c38a">
+            <isactr:ConnectorActivity.FieldObjects>
+              <isactr:FieldObject Name="_file" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="upr:IResource">[file]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="envelopeId" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[envelopeId]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="Jit_curatedAddDocumentToEnvelope" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <OutArgument x:TypeArguments="uiascb:curatedAddDocumentToEnvelope_Upload" />
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="documentId" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:Int32">50</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+            </isactr:ConnectorActivity.FieldObjects>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </isactr:ConnectorActivity>
+          <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACu1W224TSRD9lVY/7JOvuXCxFBCxl8Vah5g4yQugVXmmxu71TPfQ3WNiokh8CPwcX8LpmbE1JoDQPu0DkiW7q7qqzimdqvatfK44jd3QaE9Ks5WDWzljstGS5ilXTjl4/bYlxzov/M5wK19SxnIgWa85NTmPY9mSI+XylDa168/aFRzsIqtyr4yG43KTs/BLFhoXhbFiPBImKS3bdB0x3jcI5YQ2XiSm0LFQunTG1uTt2LzXLbExhYhIi0RZ5wWqmTTdvyO8qk1z473JhDdiwV5QbaU1qTSw3tV0glALPsRuIe/wALZlbxWvv3GATGJDehhHJipmaqEF5XmqIgoNEO0n4o08I00LfiOFp3mw/GUA58vHTyNLif/y8bMATbbBsm2jC1bcHCLRSiBPKGDZ5Rx5tW4ACKB/Du3qYtIRz8GAbyjLU24JVXUbjtBoVF16n7tBtwvgMWemE4OJA5NOZLJuOGSsvevGDN2krntI/OAhHx+1k4cP+u0jOp636eCQ2/NjPnp0eHz0+CCKgL91D09V7RfDoaSgHUjIgZ5e4Dwz1p9btEoO+i05MWZV5EHE5/N/0ZdvROqeBvr/xOT55KDX67V7fXz+cJ584U4iy3AEHVdprikt7kl8Sn4JW/e/pQx4wvhIztC2WVGChLdR4u1dOS5odaAxMRSfbkacUJF6OfC2YGAwTtWjNLUqI7uRCCpn8xm0YHQ9shf8rlAW5eu48sbEVDJE8KuCEYrRdmfslyaekgU+H3oZAu6Q4rzwv8f+99j/78Y+SJsdJiKh1EHaF9iD0D3/SOqVjiut46HbXi+vbdWOGbrSKlEch2p4E7Mc4XgQdlXGGnOtI94NCgbtVl7ju6rS7/Q6PRTBc6ox2Mb+zRuYC4VEy/Z2he5+4GaY17Xym5rfsLD1vtjbX1FlnrGOG4/qC6zoanDDIgA7EBhStOS4sb8Cwp391Jr3ju3Yc1bb6/0BnPXOmFK0wsPU5PR4n1ONafu0NV3NKPRiR2P/f0FNUgQ6osHnFyif5wxzVeKCkTO634iry8aa/n6aCelFAZblcsf5jG6mOM7UB5j6vR5SkjvF7l5BbcMlboc+1iK45Bt/mppoVXbs7iv7CMaEQwkAAA==" ConnectionId="0962332f-78f8-4d8e-bcbb-82c519d58757" DisplayName="Send Envelope" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="ConnectorActivity_6" UiPathActivityTypeId="4f48f8d0-d55e-3f3c-ae4b-ee7ce234dc7e">
+            <isactr:ConnectorActivity.FieldObjects>
+              <isactr:FieldObject Name="envelopeId" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <InArgument x:TypeArguments="x:String">[envelopeId]</InArgument>
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+              <isactr:FieldObject Name="out_envelopeId" Type="FieldArgument">
+                <isactr:FieldObject.Value>
+                  <OutArgument x:TypeArguments="x:String" />
+                </isactr:FieldObject.Value>
+              </isactr:FieldObject>
+            </isactr:ConnectorActivity.FieldObjects>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </isactr:ConnectorActivity>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>

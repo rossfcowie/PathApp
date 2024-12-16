@@ -1,0 +1,282 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_envelopes_Trigger.Bundle;assembly=CD142C3604E_envelope.YJXBG3kxyOJ16GvmM1r3T8" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="UiPathEventConnector" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathEvent" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathEventObjectType" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathEventObjectId" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathAdditionalEventData" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Main.UiPathEventConnector>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.UiPathEventConnector>
+  <this:Main.UiPathEvent>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.UiPathEvent>
+  <this:Main.UiPathEventObjectType>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.UiPathEventObjectType>
+  <this:Main.UiPathEventObjectId>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.UiPathEventObjectId>
+  <this:Main.UiPathAdditionalEventData>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.UiPathAdditionalEventData>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="63">
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.GSuite.Drive.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities.Models</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets.Enums</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.GSuite.Sheets.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>UiPath.Persistence.Activities.UserAction</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Persistence.Activities.Model.Task</x:String>
+      <x:String>UiPath.Persistence.Activities</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_envelopes_Trigger.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_envelopes_Retrieve.Bundle</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CC519D58757_envelopes_Trigger.Bundle</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_envelopes_Replace.Bundle</x:String>
+      <x:String>UiPath.GSuite.Sheets.Enums</x:String>
+      <x:String>UiPath.GSuite.Sheets.Models</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>UiPath.Semantic.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Helpers.TypeDetailsCustomization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>Studio.Generated.TypedDataRow5</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataRow4</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataRow3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataRow2</AssemblyReference>
+      <AssemblyReference>CC519D58757_envelope.FmVAK1JT63B1Ypwrp2TBx2K4</AssemblyReference>
+      <AssemblyReference>CD142C3604E_envelope.j5Tj81gl9NC1nLzPauQNI41</AssemblyReference>
+      <AssemblyReference>CD142C3604E_envelope.nT3Fh1yxc0J1L4qth1APAKD1</AssemblyReference>
+      <AssemblyReference>CD142C3604E_envelope.YJXBG3kxyOJ16GvmM1r3T8</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataRow1</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="1188,725" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="envelopesId">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">ConnectorTriggerActivity_1</x:String>
+            <x:String x:Key="SourcePropertyName">out_Envelopes_20_ID</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+      <Variable x:TypeArguments="uiascb:envelopes_Trigger" Default="[new UiPath.IntegrationService.Activities.SWEntities.CD142C3604E_envelopes_Trigger.Bundle.envelopes_Trigger]" Name="envelopes">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">ConnectorTriggerActivity_1</x:String>
+            <x:String x:Key="SourcePropertyName">Envelopes</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="upr:IResource" Name="envelope">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">ConnectorActivity_1</x:String>
+            <x:String x:Key="SourcePropertyName">Response</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem" Name="firstFile">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">UploadFilesConnections_1</x:String>
+            <x:String x:Key="SourcePropertyName">FirstResult</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+      <Variable x:TypeArguments="ugdm:GDriveRemoteItem[]" Default="[new UiPath.GSuite.Drive.Models.GDriveRemoteItem() {  }]" Name="files">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="SourceIdRef">UploadFilesConnections_1</x:String>
+            <x:String x:Key="SourcePropertyName">AllResults</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <isactr:ConnectorTriggerActivity Configuration="H4sIAAAAAAAACs1W624iNxR+FWv+kEjD5AIJCVIqbYBkSSFBIZvtRavIzByIy4w9tT1sUBRpH6R9uX2Sfp4ZArmwStVuVZAQPtfvfD7H9r13ImJL2mvee6daZelFSppbBYH3Tkae73VlRHdec9svLY3X/PXe60YwoISLeJiNfqPQwnLFtaWk5UIa7+GTX8R1bp8eFkE6d6kmY4SSMN7YCEvzjdWIfuUjcXtLml1SqrStbG5uIsuJoDgyZYICeGdG0hbyHNw5t2JGV/OUEN1YLeTEwdORM9/xoU+cJtSIT1EbP1cCEt9rC5PGfF7qW4WeRfhltrB4HvRE6YRbSJxRtTTqczOFaI5Ptd+vRlHlqvL+fTNJmsYEw+HwF0eraWVgi6IleK9pdUYP/psLyNk6jjM9eoG941RspKL5K6D/tdzLvX8tu3nUfhcAckaxSgmdiPRkQi1SWzSU82XoHCZhypRm3TZT41yy8ApY96mACcOksmysMhkxIXNlpFVajdRn6bO5yljIJRsLbSxDNhXHT23QIqVopKxVCbOKTcgyXkr5DKTwUbzMaRhHLujgu4D8iAewNaF6mj1ToJixduEhbKswG4qJZDxNYxGCOSVZ9QdW6XPJJ1Rhlo/c+lQBzNcvfwxB99cvf7rgWLU1H+dLlEy5pLNA5qTwayHolCGmS4aJTbGf2JwlGFfAt2F+uOwFDGPC6I4naUw+EwXzUDjSkfXW2tQ0t7ZQRESJCiJUZVBVEKpkyy0SwDZbEWHkY7NV47TfoL16ddzY36nW+d6oyndrVB3tUf2gtlc/3A1D4Pdf4EG2ylucKy8buozynXo55sb2VSTG4hvHUQ9GLCmt/r+HkoHn2hpc//3X0HEDdWWaLS8ICC4yuypxxT3ZZ7O2A8yL02ZZxQcxwIUVdKWlCbBAPSQ9EyEF79zYCCsIeD92pC3+tto79d1WbX+73rl5PBNurrSYTEgHx5jKmIIXCp+95hf8fPbT8Wlteje/ONvZP50l/R1duzrw2TWubCA52gm23RfeWWwzTUeSMqt57LNBNsKY/0jzKzUleSSzOEZNl/R7RgZbMeaxofLe7anijEGxBYU582dilXAn6eNuvsRxoaShF230lE8M5nqyS+UavodzYykJhnnz+KxcDrSYoRGCltLUE6MlAwdvZaARUniwFzVGxBuNwwP6e2ysq929floqGeHVEv3jV1BXGstlSAOuQVnxLLv3ykoRLd9t2OGdJBFFaRQHcSZSBKsuDtjHP7AsW3RecltOU9lzbtBzOM8uXzcN+cAVb78id+f8utO7GHRuht3T8057YYIDzrkOcHG6WXds8PCWwKKaZuk1j0EwiniUH2v12ZDuYk9LOXY24XqOUsoxHvBwimtutezDp2WXeBf35Kpq1Qt0PZa4fu7XUtDjcpIBSC7G+j03x3g8TlFn6xY6V1jeOA9/AQ0utqBwCwAA" ConnectionId="0962332f-78f8-4d8e-bcbb-82c519d58757" DisplayName="Envelope Signed by all Recipients" sap:VirtualizedContainerService.HintSize="450,206" sap2010:WorkflowViewState.IdRef="ConnectorTriggerActivity_1" UiPathActivityTypeId="8dfc11f2-876a-35fb-af7d-4a0cbdda159f" UiPathAdditionalEventData="[UiPathAdditionalEventData]" UiPathEvent="[UiPathEvent]" UiPathEventConnector="[UiPathEventConnector]" UiPathEventObjectId="[UiPathEventObjectId]" UiPathEventObjectType="[UiPathEventObjectType]">
+      <isactr:ConnectorTriggerActivity.FieldObjects>
+        <isactr:FieldObject Name="Envelopes" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="uiascb:envelopes_Trigger">[envelopes]</OutArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="out_Envelopes_20_ID" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="x:String">[envelopesId]</OutArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="TriggerFilterProperty" Type="FilterTreeValue">
+          <isactr:FieldObject.Value>
+            <isactr:FilterValuesTree>
+              <isactr:FilterValuesTree.Values>
+                <x:String>Weather Report</x:String>
+              </isactr:FilterValuesTree.Values>
+            </isactr:FilterValuesTree>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+      </isactr:ConnectorTriggerActivity.FieldObjects>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </isactr:ConnectorTriggerActivity>
+    <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACq1W204jRxD9ldY85Gk8NrfdrKVNtNiwsQLBwbCRElDUninbHc90z3b3GByEtB+S/Nx+SU73XBiDITysBIKpqq7L6VNVfRccC0oTM1DSciFJB/27YEJcxws+TalUBv0/rsNgJPPCNoK74BeeUdAPEnUjU8WTi3VOQRgMhclTvq6Uw0rJbKUlE2uRW6EktAMumeVLYkrid8bsgthMpam6EXLOVjwtyDARUcS+fvknVtkUCSZfv/wLI800WS1o5Sx5mrJExUVG0hrG8cMM5Cmx8fCYzURKofPgihIr2uaA/T4as0qPNLhlcQmI8c6r3Jy3Jo53GZO2YiZibre5VTJd+4MtM+cLpeQpORAYl4nzkyttUblQW7w4ByRXlKqcHpfpMmrORgDY30I/MDgt5/ieQHmmE3evO2FwJIusfXeDClMYfnJoQ1TDHNyHjdmHEpiWVQVV22jwUGPbXUvaMh7XObdMmzqC+2vPFDEHSe5ga0RFmLEWGddreArO6XMhNPLsW11QWNL4RCFQafprQTAEa80p2YVKxlwjtHVAuAOtXGpsR8kT+h5VqifMdTD7i5EwZLiv0bAmSe0uYqNNAROGSWVxvQUuXUivTLTKO66FQrZWBYvRETOhjWWIhk7YtGFWVKKpslZlzCo2J+sp6qR8xUXq2raJCY4gFnQ4W6fc5PNAs0cKFDPTzj2EQxBugptgPM9Td4+OtZ0f2FVwyiWf01WAFp46yUeFdK4wPKSFEM7B66HmM+s4jZLJS2pIjZPi1ABOl+gUH0yTySm2rgmbZFwBL6d5eX4SsWMEpFvuGitkokQeCgc6oi6szU2/20URCWUqcm3k+BWB7t2mp7oJoedT093j9OYtHex3Zm/f7HT2+cG0w3f3qDM9oP3v9w723+3GMfIPn+RTRnvl8ZfbdTcMTpRaFrnrgbPpX8DlEWHNj678PxP01vvdXq/X6e3g5ztjuS3M+1gTFEloUFlYTRzf6aXXuus22D/mdgFZ95tEcNm6TRFQBlAnhS8B2lbE6/t2o59gURyuhzTjRWrrvt7e/b7bP4ApSlbb6dvNg/bIejwQRjJOi2RjoD+ZDZeGknL03/i+803UWoMVSVr7LGK/eUuX+P/sC5wVZQ7NCKkdNcsuYhWGznrGU0OtzTBVKiUuN7m298y8nRDWYNLGfAuiZxJ7fMVNjfxzCOOSzgq79Q1xjr7HTdLrB3CD6LBZiAAK07M+4ZFwg6PQ5YKr6lexJdtBwxHPNkHYL0lEBtzzqIUPeVWl1d+DQjvmP8e1ssySbHhD1Ke8WQ0GAL2UuGPyDye8v7IcxzG7m+AjiT6TMTU4ArK74BP+llF2ol7UQxA83SQ6S+mfaQ1xIeBo0aknXPMPLF3DrIRdV1DUVYSb46V+0NVINgjD8CfM0fJ2YfiRrOPFgMcLSlpTxeXZyA+1ujGkR5aySl61MbKtWnfM4yU2Sbuyd5uVNa/Jche1Ve1TQKQp5pl3aEOPdlWvLv8sJ0C2ycAnqBxdtCbpS95OuJwXKNxPYXyf8tsxPifib4h2ej045uYQRF1iOQwWsHbQVuy4oFt7mKp46UG8/w9mfL0WyAsAAA==" ConnectionId="0962332f-78f8-4d8e-bcbb-82c519d58757" DisplayName="Download Documents of Envelope" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="ConnectorActivity_1" UiPathActivityTypeId="8f9eefe8-b9c2-3bd8-8854-b805a16d6620">
+      <isactr:ConnectorActivity.FieldObjects>
+        <isactr:FieldObject Name="downloadType" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">combined</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="envelopeId" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">[envelopesId]</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="Response" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="upr:IResource">[envelope]</OutArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="certificate" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+      </isactr:ConnectorActivity.FieldObjects>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </isactr:ConnectorActivity>
+    <uga:UploadFilesConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationFolder="{x:Null}" FilesList="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" ManualFolderId="{x:Null}" OverwriteExistingFile="{x:Null}" SingleFileToUpload="{x:Null}" AllResults="[files]" AuthScopesInvalid="False" BrowseFolderId="https://drive.google.com/drive/folders/11786BlirW4yY28KVVTgjPjYSArdxvuUa" ConflictResolution="Fail" ConnectionId="588de85e-9d4f-47a8-a8a5-45fafc38bca8" Convert="False" DisplayName="Upload Files" FilesInputMode="MultipleByVariable" FirstResult="[firstFile]" FolderInputMode="Browse" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_1" MultipleFilesToUpload="[Enumerable.Repeat(envelope, 1).ToList()]" SaveToFolderName="Signed" UseConnectionService="True">
+      <uga:UploadFilesConnections.FilesBackup>
+        <usau:BackupSlot x:TypeArguments="ugade:FilesInputMode" StoredValue="MultipleByVariable">
+          <usau:BackupSlot.BackupValues>
+            <scg:Dictionary x:TypeArguments="ugade:FilesInputMode, scg:List(x:Object)" />
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </uga:UploadFilesConnections.FilesBackup>
+      <uga:UploadFilesConnections.Folder>
+        <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/11786BlirW4yY28KVVTgjPjYSArdxvuUa" ConnectionKey="588de85e-9d4f-47a8-a8a5-45fafc38bca8" FriendlyName="Signed" FullPathHint="My Drive/Templates/Signed" InputMode="Browse">
+          <ugam:DriveItemArgument.Backup>
+            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
+              <usau:BackupSlot.BackupValues>
+                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+              </usau:BackupSlot.BackupValues>
+            </usau:BackupSlot>
+          </ugam:DriveItemArgument.Backup>
+        </ugam:DriveItemArgument>
+      </uga:UploadFilesConnections.Folder>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uga:UploadFilesConnections>
+  </Sequence>
+</Activity>
