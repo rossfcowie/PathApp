@@ -81,7 +81,7 @@
     <ValidationSummary />
     <div>
         <label>Name:</label>
-        <InputText @bind-Value="weatherRequest.MyName" />
+        <InputText @bind-Value="weatherRequest.Name" />
     </div>
     <div>
         <label>Email:</label>
@@ -97,7 +97,7 @@
     </div>
     <div>
         <label>PostCode:</label>
-        <InputText @bind-Value="weatherRequest.PostCode" />
+        <InputText @bind-Value="weatherRequest.MyPostCode" />
     </div>
     <div>
         <label>City:</label>
@@ -123,16 +123,16 @@
 <p>@myText</p>
 @code {
 
-    string berarertoken = "Bearer ";
+    string berarertoken = "Bearer "; //API token,
     private WeatherReportRequest weatherRequest = new WeatherReportRequest("", "", "", "", "", "", "", false);
     private string myText = "Not yet submitted";
     private void HandleValidSubmit()
     {
-        berarertoken = Configuration["BearerToken"];
+        berarertoken = Configuration["BearerToken"];  //Retrive from Config file.  Actual Key stored as Github secret and imported on build.
         if (!string.IsNullOrEmpty(berarertoken)) { 
-            myText = "Token retrieved successfully."; 
+            myText = "Token retrieved successfully.";
         } else { 
-            myText = "Failed to retrieve the token.";
+            myText = "Failed to retrieve the token."; //Website was not set up correctly so API request cannot be made.
         } 
         if (!string.IsNullOrEmpty(berarertoken)) 
         { start(weatherRequest); 
@@ -146,35 +146,39 @@
 
         startJob(berarertoken, wrr);
     }
+    /// <summary>
+    /// All details needed for the Json request for the API
+    /// </summary>
     public class WeatherReportRequest
-    {
+    {/// <summary>
+     ///
+     /// </summary>
+     /// <param name="address">Address for the Client's business</param>
+     /// <param name="postcode">Postcode Address for the Client's business</param>
+     /// <param name="city">City Address for the Client's business</param>
+     /// <param name="state">State Address for the Client's business</param>
+     /// <param name="email">Email address for the client</param>
+     /// <param name="business">Business name for the client</param>
+     /// <param name="name">Client's name</param>
+     /// <param name="weekly">Is it a weekly report or a daily one.</param>
         public WeatherReportRequest(string address, string postcode, string city, string state, string email, string business, string name, bool weekly)
         {
             Weekly = weekly;
-            Genuine = true;
+            Genuine = true; //This was used for testing, as there is a hard limit on Envelope number in docusign trial.
             Address = address;
-            PostCode = postcode;
+            MyPostCode = postcode;
             City = city;
             State = state;
             MyEmail = email;
-            MyName = name;
+            Name = name;
             Business = business;
         }
-        public bool Daily{
-            get{
-                return !Weekly;
-            }
-            set{
-                Weekly = !value;
-            }
-        }
-
         public bool Weekly, Genuine;
 
         [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
         [Required(ErrorMessage = "Postcode is required")]
-        public string PostCode { get; set; }
+        public string MyPostCode { get; set; }
         [Required(ErrorMessage = "City is required")]
         public string City { get; set; }
         [Required(ErrorMessage = "State is required")]
@@ -185,17 +189,17 @@
         [Required(ErrorMessage = "Business Name is required")]
         public string Business { get; set; }
         [Required(ErrorMessage = "Name is required")]
-        public string MyName { get; set; }
-
-        public string Name { get { return MyName; } }
-
+        public string Name { get; set; }
+        //Returns the Postcode entered but forces upper case for all letters, the RPA struggles when they aren't all capitalized.
+        public string Postcode { get { return MyPostCode.ToUpper(); } }
+        //Return the email without the restrictions applied.
         public string Email { get { return MyEmail; } }
 
     }
 
     private async Task startJob(string bearerToken, WeatherReportRequest report)
     {
-        myText = "Sending";
+        myText = "Generating Request";
         try
         {
             var client = new RestClient();
@@ -207,7 +211,7 @@
             {
                 report.Weekly,
                 Address1 = report.Address,
-                Address2 = report.PostCode,
+                Address2 = report.Postcode,
                 Address3 = report.City,
                 Address4 = report.State,
                 report.Name,
@@ -217,13 +221,14 @@
             });
 
             request.AddJsonBody(json);
+            myText = "Sending Request";
 
             RestResponse response = await client.ExecuteAsync(request);
 
             // Check if the response was successful
             if (response.IsSuccessful)
             {
-                myText = response.Content;
+                myText = "Success";
             }
             else
             {
